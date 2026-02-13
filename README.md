@@ -209,10 +209,8 @@ let i=0;
 
 let text = `Hi Love,
 
-This are the moments i always look back on
-
-Two years of laughter, tears, late-night talks, misunderstandings,
-and countless memories that I will always treasure in my heart.
+when you overhtink and lose faith in us always look back
+from where we started💗
 
 Happy Valentine's Day, Love 💗`;
 
