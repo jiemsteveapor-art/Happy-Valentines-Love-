@@ -1,5 +1,12 @@
 
 <html>
+  <body>
+
+<div class="pattern"></div>
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+<div class="circle circle3"></div>
+
 <head>
 
 <meta charset="UTF-8">
@@ -12,9 +19,40 @@
 body{
 margin:0;
 overflow:hidden;
-background:linear-gradient(to bottom right,#ff7eb3,#ff758c);
+background:linear-gradient(135deg,#f8cdda,#f3a6b5,#e8a2b7);
 font-family:Arial;
+position:relative;
 }
+/* Soft Background Circles */
+.circle{
+position:absolute;
+border-radius:50%;
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(40px);
+z-index:0;
+}
+
+.circle1{
+width:200px;
+height:200px;
+top:-50px;
+left:-50px;
+}
+
+.circle2{
+width:250px;
+height:250px;
+bottom:-80px;
+right:-80px;
+}
+
+.circle3{
+width:150px;
+height:150px;
+top:40%;
+left:70%;
+}
+
 
 /* Floating Hearts */
 .heart{
@@ -43,6 +81,9 @@ border-radius:15px;
 box-shadow:0 15px 40px rgba(0,0,0,0.3);
 text-align:center;
 z-index:10;
+position:relative;
+z-index:5;
+
 }
 
 .popup p{
@@ -70,6 +111,8 @@ color:white;
 text-align:center;
 display:none;
 width:100%;
+position:relative;
+z-index:5;
 }
 
 /* Sunflower Glow */
