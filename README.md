@@ -44,7 +44,6 @@ text-align:center;
 z-index:10;
 }
 
-/* Button */
 .popup button{
 margin-top:20px;
 padding:10px 25px;
@@ -103,6 +102,12 @@ transform:rotate(-2deg);
 opacity:0;
 animation:fadeIn 1s forwards;
 position:relative;
+cursor:pointer;
+transition:0.3s;
+}
+
+.polaroid:hover{
+transform:scale(1.05);
 }
 
 .polaroid img{
@@ -111,7 +116,7 @@ height:110px;
 object-fit:cover;
 }
 
-/* Tape Design */
+/* Tape */
 .polaroid::before{
 content:'';
 width:40px;
@@ -135,6 +140,32 @@ to{
 opacity:1;
 transform:scale(1) rotate(0deg);
 }
+}
+
+/* ZOOM OVERLAY */
+.zoomOverlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:100;
+}
+
+.zoomOverlay img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+animation:zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn{
+from{transform:scale(0.7); opacity:0;}
+to{transform:scale(1); opacity:1;}
 }
 
 /* MOBILE */
@@ -165,20 +196,17 @@ font-size:55px;
 
 Hi Normelen,
 
-Wala koy regalo for you but i made this just for you love
+Wala koy regalo for you but i made this just for you love 💗
 
-Grabu it's been 2 amazing years since we started that first conversation
+Grabe it's been 2 amazing years since we started that first conversation.
 Through all the ups and downs, challenges and happy moments,
-we stayed strong and never gave up on each other.<br><br>
+we stayed strong and never gave up on each other.
 
-I'm so proud of how far we've come, love.
-Thank for loving me, understanding me miskan badlongon ko
-and always being there deside me no matter what.<br><br>
+I'm so proud of how far we've come love.
+Thank you for loving me, understanding me miskan badlongon ko,
+and always being there beside me no matter what.
 
-Our love grew stronger every single day,
-and I can't wait to make more memories with you.<br><br>
-
-I have little surprised for you click the button🌻
+I have little surprise for you click the button 🌻
 
 </p>
 
@@ -214,7 +242,11 @@ I have little surprised for you click the button🌻
 </div>
 
 </div>
+</div>
 
+<!-- ZOOM CONTAINER -->
+<div class="zoomOverlay" id="zoomOverlay" onclick="closeZoom()">
+<img id="zoomedImg">
 </div>
 
 <script>
@@ -236,13 +268,14 @@ document.getElementById("bgMusic").play();
 typeWriter();
 }
 
+/* Typing */
 let i=0;
-let text=`Love,
+let text=`Hi Love,
 
-Where you overthink and lose faith in us always look back
-from where we started💗
+When you overthink and lose faith in us,
+always look back from where we started 💗
 
-Happy Valentine's Day 💗`;
+Happy Valentine's Day babi 💗`;
 
 let speed=45;
 
@@ -252,6 +285,22 @@ document.getElementById("typingText").innerHTML+=text.charAt(i);
 i++;
 setTimeout(typeWriter,speed);
 }
+}
+
+/* IMAGE ZOOM */
+const polaroids = document.querySelectorAll(".polaroid img");
+const zoomOverlay = document.getElementById("zoomOverlay");
+const zoomedImg = document.getElementById("zoomedImg");
+
+polaroids.forEach(img=>{
+img.addEventListener("click", function(){
+zoomOverlay.style.display="flex";
+zoomedImg.src=this.src;
+});
+});
+
+function closeZoom(){
+zoomOverlay.style.display="none";
 }
 
 </script>
