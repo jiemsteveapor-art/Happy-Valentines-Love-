@@ -134,24 +134,6 @@ transform:scale(1);
 }
 }
 </style>
-.letter{
-background:#fffaf0;
-padding:15px;
-border-radius:10px;
-box-shadow:0 0 20px rgba(0,0,0,0.2);
-font-family:'Courier New', monospace;
-border:2px solid #f4d19b;
-background-image:linear-gradient(#fdf6e3 1px, transparent 1px);
-background-size:100% 25px;
-text-align:left;
-color:#444;
-line-height:1.6;
-height:auto;
-max-height:60vh;
-overflow-y:auto;
-font-size:14px;
-}
-
 
 </head>
 
