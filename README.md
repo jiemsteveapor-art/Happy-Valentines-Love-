@@ -161,7 +161,7 @@ and always being there beside me no matter what.<br><br>
 Our love grew stronger every single day,
 and I can’t wait to make more memories with you.<br><br>
 
-pinduta ang button below for a little surprise 🌻
+i have little surprise for you click the button🌻
 </p>
 
 <button onclick="closePopup()">Open Surprise ❤️</button>
