@@ -141,7 +141,7 @@ transform:scale(1);
 
 <!-- MUSIC -->
 <audio id="bgMusic" loop>
-<source src="music.mp3" type="audio/mpeg">
+<source src="music.mp3.mp4" type="audio/mpeg">
 </audio>
 
 <!-- POPUP -->
