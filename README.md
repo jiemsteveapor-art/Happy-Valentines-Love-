@@ -1,12 +1,5 @@
 
 <html>
-  <body>
-
-<div class="pattern"></div>
-<div class="circle circle1"></div>
-<div class="circle circle2"></div>
-<div class="circle circle3"></div>
-
 <head>
 
 <meta charset="UTF-8">
@@ -18,160 +11,142 @@
 
 body{
 margin:0;
-overflow:hidden;
-background:linear-gradient(135deg,#f8cdda,#f3a6b5,#e8a2b7);
+background:linear-gradient(135deg,#f6c1cc,#e8a2b7,#f4b6c2);
 font-family:Arial;
-position:relative;
+overflow-x:hidden;
 }
-/* Soft Background Circles */
-.circle{
-position:absolute;
-border-radius:50%;
-background:rgba(255,255,255,0.25);
-backdrop-filter:blur(40px);
-z-index:0;
-}
-
-.circle1{
-width:200px;
-height:200px;
-top:-50px;
-left:-50px;
-}
-
-.circle2{
-width:250px;
-height:250px;
-bottom:-80px;
-right:-80px;
-}
-
-.circle3{
-width:150px;
-height:150px;
-top:40%;
-left:70%;
-}
-
 
 /* Floating Hearts */
 .heart{
 position:absolute;
 color:rgba(255,255,255,0.7);
-font-size:20px;
+font-size:18px;
 animation:float 10s linear infinite;
 }
-
 @keyframes float{
 from{transform:translateY(100vh);}
 to{transform:translateY(-10vh);}
 }
 
-/* PAPER LETTER POPUP */
+/* Popup */
 .popup{
 position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-background:#fffaf0;
+background:#fff8f8;
 width:90%;
-max-width:420px;
-padding:25px;
-border-radius:15px;
-box-shadow:0 15px 40px rgba(0,0,0,0.3);
+max-width:400px;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 text-align:center;
 z-index:10;
-position:relative;
-z-index:5;
-
 }
 
-.popup p{
-text-align:left;
-line-height:1.5;
-font-size:15px;
-}
-
+/* Button */
 .popup button{
 margin-top:20px;
 padding:10px 25px;
 border:none;
 border-radius:25px;
-background-color:#ff4e78;
+background:#d96b8a;
 color:white;
 }
 
-/* Surprise Main */
+/* Main */
 .main{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-color:white;
-text-align:center;
 display:none;
-width:100%;
-position:relative;
-z-index:5;
+padding:15px;
+text-align:center;
 }
 
-/* Sunflower Glow */
+/* Sunflower */
 .sunflower{
-font-size:70px;
+font-size:65px;
 animation:glow 2s ease-in-out infinite alternate;
 }
-
 @keyframes glow{
-from{
-text-shadow:0 0 10px #fff,0 0 20px #ffd700,0 0 30px #ffea00;
-transform:scale(1);
-}
-to{
-text-shadow:0 0 20px #fff,0 0 40px #ffd700,0 0 60px #ffea00;
-transform:scale(1.2);
-}
+from{text-shadow:0 0 10px #fff,0 0 20px #ffd700;}
+to{text-shadow:0 0 20px #fff,0 0 40px #ffd700;transform:scale(1.1);}
 }
 
-/* Typing Text */
+/* Paper Letter */
 #typingText{
-padding:10px;
-font-size:17px;
+background:#fff8f8;
+color:#333;
+padding:15px;
+border-radius:15px;
+font-family:'Courier New', monospace;
+text-align:left;
 white-space:pre-line;
+margin:15px auto;
+max-width:95%;
 }
 
-/* Gallery */
+/* POLAROID STYLE */
 .gallery{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:10px;
+gap:15px;
 margin-top:20px;
-padding:10px;
 }
 
-.gallery img{
-width:28vw;
-max-width:130px;
-height:28vw;
-max-height:130px;
-object-fit:cover;
-border-radius:15px;
+.polaroid{
+background:white;
+padding:10px 10px 25px 10px;
+width:120px;
+border-radius:5px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transform:rotate(-2deg);
 opacity:0;
-transform:scale(0.5);
 animation:fadeIn 1s forwards;
+position:relative;
+}
+
+.polaroid img{
+width:100%;
+height:110px;
+object-fit:cover;
+}
+
+/* Tape Design */
+.polaroid::before{
+content:'';
+width:40px;
+height:15px;
+background:rgba(255,255,255,0.6);
+position:absolute;
+top:-8px;
+left:35px;
+transform:rotate(-10deg);
 }
 
 /* Fade One by One */
-.gallery img:nth-child(1){animation-delay:0s;}
-.gallery img:nth-child(2){animation-delay:1s;}
-.gallery img:nth-child(3){animation-delay:2s;}
-.gallery img:nth-child(4){animation-delay:3s;}
-.gallery img:nth-child(5){animation-delay:4s;}
+.polaroid:nth-child(1){animation-delay:1s;}
+.polaroid:nth-child(2){animation-delay:2s;}
+.polaroid:nth-child(3){animation-delay:3s;}
+.polaroid:nth-child(4){animation-delay:4s;}
+.polaroid:nth-child(5){animation-delay:5s;}
 
 @keyframes fadeIn{
 to{
 opacity:1;
-transform:scale(1);
+transform:scale(1) rotate(0deg);
+}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+.polaroid{
+width:100px;
+}
+.polaroid img{
+height:90px;
+}
+.sunflower{
+font-size:55px;
 }
 }
 
@@ -180,57 +155,72 @@ transform:scale(1);
 
 <body>
 
-<!-- MUSIC -->
 <audio id="bgMusic" loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- POPUP LETTER -->
 <div class="popup" id="popup">
-<h2>Hi My Love ❤️</h2>
+<h3>Hi My Love ❤️</h3>
 <p>
-Hi babi,<br><br>
+
+Hi Normelen,
 
 Wala koy regalo for you but i made this just for you love
 
-Grabi It’s been 2 amazing years since we started that first conversation.
+Grabu it's been 2 amazing years since we started that first conversation
 Through all the ups and downs, challenges and happy moments,
 we stayed strong and never gave up on each other.<br><br>
 
-I’m so proud of how far we’ve come, Love.
-Thank you for loving me, understanding me miskan badlong ko
-and always being there beside me no matter what.<br><br>
+I'm so proud of how far we've come, love.
+Thank for loving me, understanding me miskan badlongon ko
+and always being there deside me no matter what.<br><br>
 
 Our love grew stronger every single day,
-and I can’t wait to make more memories with you.<br><br>
+and I can't wait to make more memories with you.<br><br>
 
-i have little surprise for you click the button🌻
+I have little surprised for you click the button🌻
+
 </p>
 
 <button onclick="closePopup()">Open Surprise ❤️</button>
 </div>
 
-<!-- SURPRISE -->
 <div class="main" id="main">
 
 <div class="sunflower">🌻</div>
 
-<h2 id="typingText"></h2>
+<div id="typingText"></div>
 
 <div class="gallery">
+
+<div class="polaroid">
 <img src="626474170_1917435798866190_7360438315416646286_n.jpg">
+</div>
+
+<div class="polaroid">
 <img src="628462705_876223445242877_4005428426257665027_n.jpg">
+</div>
+
+<div class="polaroid">
 <img src="631265316_773878738712204_6934332184240382434_n.jpg">
+</div>
+
+<div class="polaroid">
 <img src="631079412_1233055554890720_254445144777351985_n.jpg">
+</div>
+
+<div class="polaroid">
 <img src="626755290_1304506508151559_4620056559209312483_n.jpg">
+</div>
+
 </div>
 
 </div>
 
 <script>
 
-/* Floating Hearts */
-for(let i=0;i<25;i++){
+/* Hearts */
+for(let i=0;i<20;i++){
 const heart=document.createElement("div");
 heart.classList.add("heart");
 heart.innerHTML="❤";
@@ -239,7 +229,6 @@ heart.style.animationDuration=(5+Math.random()*5)+"s";
 document.body.appendChild(heart);
 }
 
-/* Popup Open */
 function closePopup(){
 document.getElementById("popup").style.display="none";
 document.getElementById("main").style.display="block";
@@ -247,21 +236,21 @@ document.getElementById("bgMusic").play();
 typeWriter();
 }
 
-/* 2 YEAR LETTER TYPE EFFECT */
 let i=0;
+let text=`Love,
 
-let text = `Hi Love,
-
-when you overhtink and lose faith in us always look back
+Where you overthink and lose faith in us always look back
 from where we started💗
 
-Happy Valentine's Day, Love 💗`;
+Happy Valentine's Day 💗`;
+
+let speed=45;
 
 function typeWriter(){
-if(i < text.length){
-document.getElementById("typingText").innerHTML += text.charAt(i);
+if(i<text.length){
+document.getElementById("typingText").innerHTML+=text.charAt(i);
 i++;
-setTimeout(typeWriter,40);
+setTimeout(typeWriter,speed);
 }
 }
 
