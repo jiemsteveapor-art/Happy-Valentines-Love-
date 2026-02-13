@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 
@@ -146,20 +146,22 @@ transform:scale(1);
 <div class="popup" id="popup">
 <h2>Hi My Love ❤️</h2>
 <p>
-Hi Normelen,<br><br>
+Hi babi,<br><br>
 
-It’s been 2 amazing years since we started this journey together.
+Wala koy regalo for you but i made this just for you love
+
+Grabi It’s been 2 amazing years since we started that first conversation.
 Through all the ups and downs, challenges and happy moments,
 we stayed strong and never gave up on each other.<br><br>
 
 I’m so proud of how far we’ve come, Love.
-Thank you for loving me, understanding me,
+Thank you for loving me, understanding me miskan badlong ko
 and always being there beside me no matter what.<br><br>
 
 Our love grew stronger every single day,
 and I can’t wait to make more memories with you.<br><br>
 
-Click the button below for a little surprise 🌻
+pinduta ang button below for a little surprise 🌻
 </p>
 
 <button onclick="closePopup()">Open Surprise ❤️</button>
@@ -207,24 +209,10 @@ let i=0;
 
 let text = `Hi Love,
 
-It has already been 2 beautiful years since we started this journey together.
+This are the moments i always look back on
 
 Two years of laughter, tears, late-night talks, misunderstandings,
 and countless memories that I will always treasure in my heart.
-
-Through every up and down,
-we chose each other.
-We stayed.
-We fought for us.
-
-Babi, thank you for being my safe place.
-
-We are not perfect,
-but what we have is real.
-
-Our love continues to grow stronger every single day.
-
-I will always choose you — in every lifetime.
 
 Happy Valentine's Day, Love 💗`;
 
