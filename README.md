@@ -1,5 +1,8 @@
 
 <html>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <head>
 <meta charset="UTF-8">
 <title>For You ❤️</title>
@@ -31,9 +34,11 @@ top:50%;
 left:50%;
 transform:translate(-50%,-50%);
 background:white;
-width:85%;
+width:90%;
 max-width:500px;
-padding:30px;
+max-height:90vh;
+overflow-y:auto;
+padding:20px;
 border-radius:20px;
 box-shadow:0 15px 40px rgba(0,0,0,0.3);
 text-align:center;
@@ -59,20 +64,22 @@ transform:scale(1.1);
 }
 
 /* Surprise Main */
-.main{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+.popup button{
+margin-top:20px;
+padding:12px 30px;
+font-size:16px;
+border:none;
+border-radius:25px;
+background-color:#ff4e78;
 color:white;
-text-align:center;
-display:none;
+cursor:pointer;
 }
 
 /* Glowing Sunflower */
 .sunflower{
-font-size:90px;
+font-size:60px;
 animation:glow 2s ease-in-out infinite alternate;
+}
 }
 @keyframes glow{
 from{
@@ -94,8 +101,10 @@ gap:15px;
 margin-top:20px;
 }
 .gallery img{
-width:120px;
-height:120px;
+width:28vw;
+height:28vw;
+max-width:120px;
+max-height:120px;
 object-fit:cover;
 border-radius:15px;
 opacity:0;
@@ -125,6 +134,24 @@ transform:scale(1);
 }
 }
 </style>
+.letter{
+background:#fffaf0;
+padding:15px;
+border-radius:10px;
+box-shadow:0 0 20px rgba(0,0,0,0.2);
+font-family:'Courier New', monospace;
+border:2px solid #f4d19b;
+background-image:linear-gradient(#fdf6e3 1px, transparent 1px);
+background-size:100% 25px;
+text-align:left;
+color:#444;
+line-height:1.6;
+height:auto;
+max-height:60vh;
+overflow-y:auto;
+font-size:14px;
+}
+
 
 </head>
 
@@ -137,7 +164,17 @@ transform:scale(1);
 
 <!-- POPUP -->
 <div class="popup" id="popup">
+
+<div class="letter">
 <h2>Hi My Love ❤️</h2>
+
+<p id="letterText"></p>
+
+<button onclick="closePopup()">Open Surprise ❤️</button>
+
+</div>
+
+</div>
 
 <p>
 Hi Normelen,<br><br>
@@ -208,6 +245,18 @@ i++;
 setTimeout(typeWriter,speed);
 }
 }
+let j=0;
+let message="Hi Normelen,\n\nIt’s been 2 amazing years since we started this journey together.\nThrough all the ups and downs, we stayed strong and never gave up on each other.\n\nI’m so proud of how far we've come, Love.\nThank you for always being there beside me no matter what.\n\nOur love grew stronger every single day,\nand I can’t wait to make more memories with you.\n\nClick the button below for a little surprise 🌻";
+
+function typeLetter(){
+if(j<message.length){
+document.getElementById("letterText").innerHTML+=message.charAt(j);
+j++;
+setTimeout(typeLetter,40);
+}
+}
+
+window.onload=typeLetter;
 
 </script>
 
