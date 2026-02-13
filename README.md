@@ -1,101 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta charset="UTF-8">
-<title>For Normalen ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For You ❤️</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Courier New', monospace;
-}
-
 body{
-background:#000;
+margin:0;
 overflow:hidden;
+background:linear-gradient(to bottom right,#ff7eb3,#ff758c);
+font-family:Arial;
+}
+
+/* Floating Hearts */
+.heart{
+position:absolute;
+color:rgba(255,255,255,0.7);
+font-size:20px;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-10vh);}
+}
+
+/* PAPER LETTER POPUP */
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#fffaf0;
+width:90%;
+max-width:420px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
 text-align:center;
-color:#000;
-}
-
-/* 🌻 Sunflower Glow */
-.sunflower{
-position:fixed;
-top:10px;
-right:10px;
-width:80px;
-animation:glow 2s infinite alternate;
-z-index:5;
-}
-
-@keyframes glow{
-from{filter:drop-shadow(0 0 5px yellow);}
-to{filter:drop-shadow(0 0 25px gold);}
-}
-
-/* 📜 Letter Popup */
-#popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
 z-index:10;
 }
 
-.letter{
-background:#fffaf0;
-padding:20px;
-border-radius:10px;
-width:90%;
-max-width:400px;
-min-height:300px;
-box-shadow:0 0 20px rgba(0,0,0,0.3);
-background-image:linear-gradient(#faf3dd 1px, transparent 1px);
-background-size:100% 30px;
+.popup p{
 text-align:left;
-line-height:30px;
+line-height:1.5;
+font-size:15px;
 }
 
-button{
+.popup button{
 margin-top:20px;
-padding:10px 20px;
+padding:10px 25px;
 border:none;
-background:pink;
-border-radius:5px;
+border-radius:25px;
+background-color:#ff4e78;
+color:white;
 }
 
-/* 🎞️ Slideshow */
-.slideshow{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:none;
-justify-content:center;
-align-items:center;
-background:#000;
-}
-
-.slide{
+/* Surprise Main */
+.main{
 position:absolute;
-max-width:90%;
-max-height:80%;
-opacity:0;
-transition:opacity 2s;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+color:white;
+text-align:center;
+display:none;
+width:100%;
 }
 
-.show{
+/* Sunflower Glow */
+.sunflower{
+font-size:70px;
+animation:glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 10px #fff,0 0 20px #ffd700,0 0 30px #ffea00;
+transform:scale(1);
+}
+to{
+text-shadow:0 0 20px #fff,0 0 40px #ffd700,0 0 60px #ffea00;
+transform:scale(1.2);
+}
+}
+
+/* Typing Text */
+#typingText{
+padding:10px;
+font-size:17px;
+white-space:pre-line;
+}
+
+/* Gallery */
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-top:20px;
+padding:10px;
+}
+
+.gallery img{
+width:28vw;
+max-width:130px;
+height:28vw;
+max-height:130px;
+object-fit:cover;
+border-radius:15px;
+opacity:0;
+transform:scale(0.5);
+animation:fadeIn 1s forwards;
+}
+
+/* Fade One by One */
+.gallery img:nth-child(1){animation-delay:0s;}
+.gallery img:nth-child(2){animation-delay:1s;}
+.gallery img:nth-child(3){animation-delay:2s;}
+.gallery img:nth-child(4){animation-delay:3s;}
+.gallery img:nth-child(5){animation-delay:4s;}
+
+@keyframes fadeIn{
+to{
 opacity:1;
+transform:scale(1);
+}
 }
 
 </style>
@@ -103,79 +137,103 @@ opacity:1;
 
 <body>
 
-<audio autoplay loop>
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<img class="sunflower" src="https://cdn-icons-png.flaticon.com/512/766/766017.png">
+<!-- POPUP LETTER -->
+<div class="popup" id="popup">
+<h2>Hi My Love ❤️</h2>
+<p>
+Hi Normelen,<br><br>
 
-<div id="popup">
-<div class="letter">
-<p id="typeText"></p>
-<button onclick="startSurprise()">Open Surprise 💌</button>
-</div>
+It’s been 2 amazing years since we started this journey together.
+Through all the ups and downs, challenges and happy moments,
+we stayed strong and never gave up on each other.<br><br>
+
+I’m so proud of how far we’ve come, Love.
+Thank you for loving me, understanding me,
+and always being there beside me no matter what.<br><br>
+
+Our love grew stronger every single day,
+and I can’t wait to make more memories with you.<br><br>
+
+Click the button below for a little surprise 🌻
+</p>
+
+<button onclick="closePopup()">Open Surprise ❤️</button>
 </div>
 
-<div class="slideshow" id="slides">
-<img class="slide" src="1.jpg">
-<img class="slide" src="2.jpg">
-<img class="slide" src="3.jpg">
-<img class="slide" src="4.jpg">
-<img class="slide" src="5.jpg">
+<!-- SURPRISE -->
+<div class="main" id="main">
+
+<div class="sunflower">🌻</div>
+
+<h2 id="typingText"></h2>
+
+<div class="gallery">
+<img src="626474170_1917435798866190_7360438315416646286_n.jpg">
+<img src="628462705_876223445242877_4005428426257665027_n.jpg">
+<img src="631265316_773878738712204_6934332184240382434_n.jpg">
+<img src="631079412_1233055554890720_254445144777351985_n.jpg">
+<img src="626755290_1304506508151559_4620056559209312483_n.jpg">
+</div>
+
 </div>
 
 <script>
 
-<script>
+/* Floating Hearts */
+for(let i=0;i<25;i++){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(heart);
+}
+
+/* Popup Open */
+function closePopup(){
+document.getElementById("popup").style.display="none";
+document.getElementById("main").style.display="block";
+document.getElementById("bgMusic").play();
+typeWriter();
+}
+
+/* 2 YEAR LETTER TYPE EFFECT */
+let i=0;
 
 let text = `Hi Love,
 
 It has already been 2 beautiful years since we started this journey together.
 
-Two years of laughter, tears, late-night talks, misunderstandings, and countless memories that I will always treasure in my heart.
+Two years of laughter, tears, late-night talks, misunderstandings,
+and countless memories that I will always treasure in my heart.
 
-Through every up and down, every challenge that tried to test us, we chose each other. We stayed. We fought for us. And that means everything to me.
+Through every up and down,
+we chose each other.
+We stayed.
+We fought for us.
 
 Babi, thank you for being my safe place.
-Thank you for loving me even on days when I am difficult to love.
-Thank you for your patience, your understanding, and your soft heart.
 
-We are not perfect, but what we have is real.
-And every single day, our love continues to grow stronger, deeper, and more beautiful.
+We are not perfect,
+but what we have is real.
 
-I am so grateful that it’s you.
-I will always choose you — in every lifetime, in every version of our story.
+Our love continues to grow stronger every single day.
 
-Happy Valentine’s Day, my love 💗`;
+I will always choose you — in every lifetime.
 
-let i = 0;
+Happy Valentine's Day, Love 💗`;
 
-function typeEffect(){
+function typeWriter(){
 if(i < text.length){
-document.getElementById("typeText").innerHTML += text.charAt(i);
+document.getElementById("typingText").innerHTML += text.charAt(i);
 i++;
-setTimeout(typeEffect,40); // you can change speed here
+setTimeout(typeWriter,40);
 }
-}
-
-typeEffect();
-
-/* 🎞️ Fade Slideshow */
-function startSurprise(){
-document.getElementById("popup").style.display="none";
-let slides=document.getElementById("slides");
-slides.style.display="flex";
-
-let imgs=document.querySelectorAll(".slide");
-let index=0;
-
-function showNext(){
-imgs.forEach(img=>img.classList.remove("show"));
-imgs[index].classList.add("show");
-index=(index+1)%imgs.length;
-}
-showNext();
-setInterval(showNext,3000);
 }
 
 </script>
