@@ -1,247 +1,184 @@
-
-<html>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
-<title>For You ❤️</title>
+<title>For Normalen ❤️</title>
 
 <style>
-body{
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Courier New', monospace;
+}
+
+body{
+background:#000;
 overflow:hidden;
-background:linear-gradient(to bottom right,#ff7eb3,#ff758c);
-font-family:Arial;
-}
-
-/* Floating Hearts */
-.heart{
-position:absolute;
-color:rgba(255,255,255,0.7);
-font-size:20px;
-animation:float 10s linear infinite;
-}
-@keyframes float{
-from{transform:translateY(100vh);}
-to{transform:translateY(-10vh);}
-}
-
-/* Popup */
-.popup{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-width:90%;
-max-width:500px;
-max-height:90vh;
-overflow-y:auto;
-padding:20px;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,0,0,0.3);
 text-align:center;
-animation:fadeIn 1.5s ease-in-out;
+color:#000;
+}
+
+/* 🌻 Sunflower Glow */
+.sunflower{
+position:fixed;
+top:10px;
+right:10px;
+width:80px;
+animation:glow 2s infinite alternate;
+z-index:5;
+}
+
+@keyframes glow{
+from{filter:drop-shadow(0 0 5px yellow);}
+to{filter:drop-shadow(0 0 25px gold);}
+}
+
+/* 📜 Letter Popup */
+#popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
 z-index:10;
 }
-@keyframes fadeIn{
-from{opacity:0;transform:translate(-50%,-60%);}
-to{opacity:1;transform:translate(-50%,-50%);}
+
+.letter{
+background:#fffaf0;
+padding:20px;
+border-radius:10px;
+width:90%;
+max-width:400px;
+min-height:300px;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+background-image:linear-gradient(#faf3dd 1px, transparent 1px);
+background-size:100% 30px;
+text-align:left;
+line-height:30px;
 }
-.popup button{
+
+button{
 margin-top:20px;
-padding:10px 25px;
+padding:10px 20px;
 border:none;
-border-radius:25px;
-background-color:#ff4e78;
-color:white;
-cursor:pointer;
-}
-.popup button:hover{
-background-color:#ff1e56;
-transform:scale(1.1);
+background:pink;
+border-radius:5px;
 }
 
-/* Surprise Main */
-.popup button{
-margin-top:20px;
-padding:12px 30px;
-font-size:16px;
-border:none;
-border-radius:25px;
-background-color:#ff4e78;
-color:white;
-cursor:pointer;
-}
-
-/* Glowing Sunflower */
-.sunflower{
-font-size:60px;
-animation:glow 2s ease-in-out infinite alternate;
-}
-}
-@keyframes glow{
-from{
-text-shadow:0 0 10px #fff,0 0 20px #ffd700,0 0 30px #ffea00;
-transform:scale(1);
-}
-to{
-text-shadow:0 0 20px #fff,0 0 40px #ffd700,0 0 60px #ffea00;
-transform:scale(1.2);
-}
-}
-
-/* Gallery */
-.gallery{
-display:flex;
-flex-wrap:wrap;
+/* 🎞️ Slideshow */
+.slideshow{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
 justify-content:center;
-gap:15px;
-margin-top:20px;
+align-items:center;
+background:#000;
 }
-.gallery img{
-width:28vw;
-height:28vw;
-max-width:120px;
-max-height:120px;
-object-fit:cover;
-border-radius:15px;
+
+.slide{
+position:absolute;
+max-width:90%;
+max-height:80%;
 opacity:0;
-transform:scale(0.5);
-animation:fadeIn 1s forwards;
+transition:opacity 2s;
 }
 
-/* Fade One by One */
-.gallery img:nth-child(1){animation-delay:0s;}
-.gallery img:nth-child(2){animation-delay:1s;}
-.gallery img:nth-child(3){animation-delay:2s;}
-.gallery img:nth-child(4){animation-delay:3s;}
-.gallery img:nth-child(5){animation-delay:4s;}
+.show{
+opacity:1;
+}
 
-@keyframes fadeIn{
-to{
-opacity:1;
-transform:scale(1);
-}
-}
-  
-}
-@keyframes pop{
-to{
-opacity:1;
-transform:scale(1);
-}
-}
 </style>
-
 </head>
 
 <body>
 
-<!-- MUSIC -->
-<audio id="bgMusic" loop>
-<source src="music.mp3.mp4" type="audio/mpeg">
+<audio autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
+<img class="sunflower" src="https://cdn-icons-png.flaticon.com/512/766/766017.png">
 
+<div id="popup">
 <div class="letter">
-<h2>Hi My Love ❤️</h2>
-
-<p id="letterText"></p>
-
-<button onclick="closePopup()">Open Surprise ❤️</button>
-
+<p id="typeText"></p>
+<button onclick="startSurprise()">Open Surprise 💌</button>
+</div>
 </div>
 
-</div>
-
-<p>
-Hi Normelen,<br><br>
-
-It’s been 2 amazing years since we started this journey together.
-Through all the ups and downs, challenges and happy moments,
-we stayed strong and never gave up on each other.<br><br>
-
-I’m so proud of how far we’ve come, Love.
-Thank you for loving me, understanding me,
-and always being there beside me no matter what.<br><br>
-
-Our love grew stronger every single day,
-and I can’t wait to make more memories with you.<br><br>
-
-Click the button below for a little surprise 🌻
-</p>
-
-<button onclick="closePopup()">Open Surprise ❤️</button>
-</div>
-
-<!-- SURPRISE -->
-<div class="main" id="main">
-
-<div class="sunflower">🌻</div>
-
-<h1 id="typingText"></h1>
-
-<div class="gallery">
-<img src="626474170_1917435798866190_7360438315416646286_n.jpg">
-<img src="628462705_876223445242877_4005428426257665027_n.jpg">
-<img src="631265316_773878738712204_6934332184240382434_n.jpg">
-<img src="631079412_1233055554890720_254445144777351985_n.jpg">
-<img src="626755290_1304506508151559_4620056559209312483_n.jpg">
-</div>
-
+<div class="slideshow" id="slides">
+<img class="slide" src="1.jpg">
+<img class="slide" src="2.jpg">
+<img class="slide" src="3.jpg">
+<img class="slide" src="4.jpg">
+<img class="slide" src="5.jpg">
 </div>
 
 <script>
 
-/* Floating Hearts */
-for(let i=0;i<25;i++){
-const heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="❤";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(heart);
-}
+<script>
 
-/* Popup Open */
-function closePopup(){
-document.getElementById("popup").style.display="none";
-document.getElementById("main").style.display="block";
-document.getElementById("bgMusic").play();
-typeWriter();
-}
+let text = `Hi Love,
 
-/* Typing Text */
-let i=0;
-let text="You are my sunshine 🌻 Thank you for making my life beautiful ❤️";
-let speed=60;
+It has already been 2 beautiful years since we started this journey together.
 
-function typeWriter(){
-if(i<text.length){
-document.getElementById("typingText").innerHTML+=text.charAt(i);
+Two years of laughter, tears, late-night talks, misunderstandings, and countless memories that I will always treasure in my heart.
+
+Through every up and down, every challenge that tried to test us, we chose each other. We stayed. We fought for us. And that means everything to me.
+
+Babi, thank you for being my safe place.
+Thank you for loving me even on days when I am difficult to love.
+Thank you for your patience, your understanding, and your soft heart.
+
+We are not perfect, but what we have is real.
+And every single day, our love continues to grow stronger, deeper, and more beautiful.
+
+I am so grateful that it’s you.
+I will always choose you — in every lifetime, in every version of our story.
+
+Happy Valentine’s Day, my love 💗`;
+
+let i = 0;
+
+function typeEffect(){
+if(i < text.length){
+document.getElementById("typeText").innerHTML += text.charAt(i);
 i++;
-setTimeout(typeWriter,speed);
-}
-}
-let j=0;
-let message="Hi Normelen,\n\nIt’s been 2 amazing years since we started this journey together.\nThrough all the ups and downs, we stayed strong and never gave up on each other.\n\nI’m so proud of how far we've come, Love.\nThank you for always being there beside me no matter what.\n\nOur love grew stronger every single day,\nand I can’t wait to make more memories with you.\n\nClick the button below for a little surprise 🌻";
-
-function typeLetter(){
-if(j<message.length){
-document.getElementById("letterText").innerHTML+=message.charAt(j);
-j++;
-setTimeout(typeLetter,40);
+setTimeout(typeEffect,40); // you can change speed here
 }
 }
 
-window.onload=typeLetter;
+typeEffect();
+
+/* 🎞️ Fade Slideshow */
+function startSurprise(){
+document.getElementById("popup").style.display="none";
+let slides=document.getElementById("slides");
+slides.style.display="flex";
+
+let imgs=document.querySelectorAll(".slide");
+let index=0;
+
+function showNext(){
+imgs.forEach(img=>img.classList.remove("show"));
+imgs[index].classList.add("show");
+index=(index+1)%imgs.length;
+}
+showNext();
+setInterval(showNext,3000);
+}
 
 </script>
 
 </body>
-
-# Happy-Valentines-Love-
+</html>
