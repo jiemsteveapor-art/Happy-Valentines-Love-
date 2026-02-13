@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -137,9 +137,26 @@ transform:scale(1);
 
 <!-- POPUP -->
 <div class="popup" id="popup">
-<h2>Click Me ❤️</h2>
-<p>I have a surprise for you 🌻</p>
-<button onclick="closePopup()">Open</button>
+<h2>Hi My Love ❤️</h2>
+
+<p>
+Hi Normelen,<br><br>
+
+It’s been 2 amazing years since we started this journey together.
+Through all the ups and downs, challenges and happy moments,
+we stayed strong and never gave up on each other.<br><br>
+
+I’m so proud of how far we’ve come, Love.
+Thank you for loving me, understanding me,
+and always being there beside me no matter what.<br><br>
+
+Our love grew stronger every single day,
+and I can’t wait to make more memories with you.<br><br>
+
+Click the button below for a little surprise 🌻
+</p>
+
+<button onclick="closePopup()">Open Surprise ❤️</button>
 </div>
 
 <!-- SURPRISE -->
@@ -195,5 +212,5 @@ setTimeout(typeWriter,speed);
 </script>
 
 </body>
-</html>
+
 # Happy-Valentines-Love-
